@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width">
 
     <title>{{ currentpage.name }} - {{target.display_name}}</title>
+    <title>{{ currentpage.name }} - XRP Ledger Dev Portal</title>
 
     <!-- favicon -->
     <link rel="apple-touch-icon" sizes="180x180" href="assets/favicons/apple-touch-icon.png">
@@ -70,6 +71,9 @@
           <label class="sr-only" for="topsearchbar">{{target.strings.search}}</label>
           <input name="q" value="site:xrpl.org" type="hidden">
           <input id="topsearchbar" name="q" type="text" class="form-control" class="top-search" placeholder="{{target.strings.search}}">
+          <label class="sr-only" for="topsearchbar">Search site with Google...</label>
+          <input name="q" value="site:xrpl.org" type="hidden">
+          <input id="topsearchbar" name="q" type="text" class="form-control" class="top-search" placeholder="Search site with Google...">
           <button type="submit" class="btn btn-default fa fa-search">&nbsp;</button>
         </div>
       </form>
