@@ -169,15 +169,16 @@ _**To connect your validator to the XRP Ledger network using proxies:**_
 
 ### Connect using public hubs
 
-This configuration connects your validator to the network using two [public hubs](rippled-server-modes.html#public-hubs). This configuration is similar to [connecting using proxies you run yourself](#connect-using-proxies), but instead you connect through public hubs.
+This configuration connects your validator to the network using three [public hubs](rippled-server-modes.html#public-hubs). This configuration is similar to [connecting using proxies you run yourself](#connect-using-proxies), but instead you connect through public hubs.
 
 _**To connect your validator to the network using public hubs:**_
 
-1. In your validator's `rippled.cfg` file, include the following `[ips_fixed]` stanza. The two values, `r.ripple.com 51235` and `zaphod.alloy.ee 51235`, are default public hubs. This stanza tells `rippled` to always attempt to maintain peer connections with these public hubs.
+1. In your validator's `rippled.cfg` file, include the following `[ips_fixed]` stanza. The three values, `r.ripple.com 51235`, `zaphod.alloy.ee 51235` and `sahyadri.isrdc.in 51235`, are default public hubs. This stanza tells `rippled` to always attempt to maintain peer connections with these public hubs.
 
         [ips_fixed]
         r.ripple.com 51235
         zaphod.alloy.ee 51235
+        sahyadri.isrdc.in 51235
 
     **Caution:** This configuration connects your validator to the network using default public hubs. Because these are the _default_ public hubs, they may sometimes be too busy to provide your validator with a connection to the network. To help avoid this issue, connect to more public hubs and, even better, connect to non-default public hubs.
 
@@ -236,9 +237,11 @@ To provide domain verification:
 
 1. Choose a domain name you own that you want to be publicly associated with your validator. You must run a public-facing HTTPS server on port 443 of that domain and you must have access to the private key file associated with that server's TLS certificate. (Note: [TLS was formerly called SSL](https://en.wikipedia.org/wiki/Transport_Layer_Security).) As a precaution against DDoS attempts, your domain name should not resolve to the ip address of your validator.
 
-2. Share your validator's public key with the public, especially other `rippled` operators. For example, you can share your validator's public key on your website, on social media, in the [XRPChat community forum](https://www.xrpchat.com/), or in a press release.
+2. Serve an [`xrp-ledger.toml`](xrp-ledger-toml.html) file at your domain, and complete the [domain verification](xrp-ledger-toml.html#domain-verification) steps.
 
-3. Submit a request to have your validator listed in XRP Charts' [Validator Registry](https://xrpcharts.ripple.com/#/validators) using this [Google Form](https://docs.google.com/forms/d/e/1FAIpQLScszfq7rRLAfArSZtvitCyl-VFA9cNcdnXLFjURsdCQ3gHW7w/viewform). Having your validator listed in this registry provides another form of public verification that your validator and domain are owned by you. To complete the form, you'll need the following information:
+3. Share your validator's public key with the public, especially other `rippled` operators. For example, you can share your validator's public key on your website, on social media, in the [XRPChat community forum](https://www.xrpchat.com/), or in a press release.
+
+4. Submit a request to have your validator listed in XRP Charts' [Validator Registry](https://xrpcharts.ripple.com/#/validators) using this [Google Form](https://docs.google.com/forms/d/e/1FAIpQLScszfq7rRLAfArSZtvitCyl-VFA9cNcdnXLFjURsdCQ3gHW7w/viewform). Having your validator listed in this registry provides another form of public verification that your validator and domain are owned by you. To complete the form, you'll need the following information:
 
       1. Find your validator public key by running the following on the validator server.
 
@@ -266,7 +269,7 @@ To provide domain verification:
 
         Provide the value returned in the **Domain Signature** field of the Google Form.
 
-4. After submitting the completed Google Form, you'll receive an email from XRP Charts that tells you whether your domain verification succeeded or failed. If your domain verification succeeds, XRP Charts lists your validator and domain in its [Validator Registry](https://xrpcharts.ripple.com/#/validators).
+5. After submitting the completed Google Form, you'll receive an email from XRP Charts that tells you whether your domain verification succeeded or failed. If your domain verification succeeds, XRP Charts lists your validator and domain in its [Validator Registry](https://xrpcharts.ripple.com/#/validators).
 
 <!--{ ***TODO: For the future - add a new section or separate document: "Operating a Trusted Validator" -- things that you need to be aware of once your validator has been added to a UNL and is participating in consensus. We should tell the user what to expect once they are listed in a UNL. How to tell if your validator is participating in the consensus process? How to tell if something isn't right with your validator - warning signs that they should look out for? How to tell if your validator has fallen out of agreement - what is the acceptable vs unacceptable threshold? Maybe provide a script that will alert them when something is going wrong.*** }-->
 

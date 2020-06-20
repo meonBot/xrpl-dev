@@ -68,146 +68,19 @@ targets:
         #  Override them with --vars to change which fork/branch to edit.
         github_forkurl: https://github.com/ripple/xrpl-dev-portal
         github_branch: master
-        strings:
-            blog: "Blog"
-            search: "Search site with Google..."
-            bc_home: "Home"
-            tl_banner:
-                head: "Sorry, this page is not available in your language."
-                body: "We are making an effort to offer the XRP Ledger Dev Portal in a variety of languages, but not all pages are available in all languages. If you'd like to help, <a href=\"https://github.com/ripple/xrpl-dev-portal/blob/master/CONTRIBUTING.md\">please contribute!</a>"
-            pagetoc: "In this document"
-            footer:
-                ripple:
-                    careers: "Ripple Careers"
-                    github: "Ripple on GitHub"
-                    xrp_resources: "XRP Resources"
-                license: "License"
-            to_top:
-                short: "Top"
-                long: "Jump to top of page"
-            github_edit: "Edit"
-            home:
-                intro:
-                    head: "Powering the Internet of Value."
-                    body1: "The <a href=\"#xrp_ledger_intro\">XRP Ledger</a> is open-source technology that anyone can use."
-                    body2: "Use the tools and information provided here to integrate with and contribute to the open-source platform."
-                    subhead: "Want more?"
-                    sub_body: "Get updates about XRP Ledger webinars, releases, and documentation!"
-                    cta: "Sign up!"
-                cards_1:
-                    learn:
-                        head: "Learn How It Works"
-                        about_xrp: "About XRP"
-                        cta: "All Concepts"
-                    read_docs:
-                        head: "Read Documentation"
-                        full_doc_index: "Full Doc Index"
-                        cta: "All Docs"
-                    explore:
-                        head: "Explore the XRP Ledger"
-                        blurb: "Use the XRPL Explorer to view a stream of ledger activity and see validator statuses."
-                        cta: "Go to the Explorer"
-                what_is_xrpl:
-                    head: "What is the XRP Ledger?"
-                    body_1: "The XRP Ledger is a decentralized cryptographic ledger, powered by a network of peer-to-peer servers. It is the home of XRP, a digital asset designed to bridge the many different currencies in use worldwide."
-                    digital_asset:
-                        head: "The Digital Asset for Payments"
-                        url: "xrp-ledger-overview.html#the-digital-asset-for-payments"
-                    censorship_resistant:
-                        head: "Censorship-Resistant Transaction Processing"
-                        url: "xrp-ledger-overview.html#censorship-resistant-transaction-processing"
-                    fast_algorithm:
-                        head: "Fast, Efficient Consensus Algorithm"
-                        url: "xrp-ledger-overview.html#fast-efficient-consensus-algorithm"
-                    finite_xrp:
-                        head: "Finite XRP Supply"
-                        url: "xrp-ledger-overview.html#finite-xrp-supply"
-                    responsible_governance:
-                        head: "Responsible Software Governance"
-                        url: "xrp-ledger-overview.html#responsible-software-governance"
-                    secure_crypto:
-                        head: "Secure, Adaptable Cryptography"
-                        url: "xrp-ledger-overview.html#secure-adaptable-cryptography"
-                    smart_contracts:
-                        head: "Modern Features for Smart Contracts"
-                        url: "xrp-ledger-overview.html#modern-features-for-smart-contracts"
-                    decentralized_exchange:
-                        head: "On-Ledger Decentralized Exchange"
-                        url: "xrp-ledger-overview.html#on-ledger-decentralized-exchange"
-
+        locale_file: locale/en/LC_MESSAGES/messages.mo
+        link_subs:
+            "./src/api-v3/paths/preparations/payments.ts": "https://github.com/xpring-eng/xrp-api/blob/master/src/api-v3/paths/preparations/payments.ts"
 
     -   name: ja
         lang: ja
         display_name: XRP Ledger Dev Portal (日本語)
         github_forkurl: https://github.com/ripple/xrpl-dev-portal
         github_branch: master
-        strings:
-            blog: "ブログ"
-            search: "サイトをGoogleで検索"
-            bc_home: "ホーム"
-            tl_banner:
-                head: "も仕分けありませんがこのページは日本語では入手不可" #TODO: check translation
-                body: "XRP Ledger Dev Portalをさまざまな言語で提供するよう努力していますが、すべてのページがすべての言語で利用できるわけではありません。助けたいと思うなら、<a href=\"https://github.com/ripple/xrpl-dev-portal#contributing\">提供して下さい！</a>" #TODO: check translation & have a real link
-            pagetoc: "目次"
-            footer:
-                ripple:
-                    careers: "Ripple 採用情報"
-                    github: "GitHubでRipple"
-                    xrp_resources: "XRP リソース"
-                license: "ライセンス"
-            to_top:
-                short: "先頭へ"
-                long: "このページの先頭へ"
-            github_edit: "Edit" #TODO:translate? (This is the "Edit" button that takes you to the page on GitHub where you can edit the current file and contribute your changes back.)
-            home: # Text from xrpl.org/index.html
-                intro:
-                    head: "価値のインターネットをパワーする。"
-                    body1: "<a href=\"#xrp_ledger_intro\">XRP Ledger</a>は誰でもが使い得るオープンソース技術。"
-                    body2: "このツールと情報でXRPのオープンソースプラットフォームを統合して開発を提供します。" #TODO:check translation
-                    subhead: "Want more?" #TODO:translate
-                    sub_body: "Get updates about XRP Ledger webinars, releases, and documentation!" #TODO:translate
-                    cta: "Sign up!" #TODO:translate
-                cards_1:
-                    learn:
-                        head: "XRP技術を理解する"
-                        about_xrp: "XRPについて"
-                        cta: "全コンセプト"
-                    read_docs:
-                        head: "ドキュメントを読む"
-                        full_doc_index: "全ドキュメント目次"
-                        cta: "全ドキュメント"
-                    explore:
-                        head: "XRP Ledgerを探る"
-                        blurb: "XRP Ledger エクスプローラを使ってレジャーの動き、バリデータのステータスを見る。" #TODO:check translation
-                        cta: "XRP Ledger エクスプローラへ"
-                what_is_xrpl:
-                    head: "XRP Ledgerとは何？"
-                    body_1: "XRP Ledgerは、ピアツーピア・サーバーのネットワーク機能を備えた分散型の暗号台帳です。XRP LedgerはXRPの土台となるものであり、世界中で使用されている様々な通貨の橋渡しをするために設計されたデジタル資産です。"
-                    digital_asset:
-                        head: "決済のためのデジタル資産"
-                        url: "xrp-ledger-overview.html#決済のためのデジタル資産"
-                    censorship_resistant:
-                        head: "耐検閲性のある取引処理"
-                        url: "xrp-ledger-overview.html#耐検閲性のある取引処理"
-                    fast_algorithm:
-                        head: "高速で効率的なConsensusアルゴリズム"
-                        url: "xrp-ledger-overview.html#高速で効率的なconsensusアルゴリズム"
-                    finite_xrp:
-                        head: "限定されたXRP供給量"
-                        url: "xrp-ledger-overview.html#限定されたxrp供給量"
-                    responsible_governance:
-                        head: "責任あるソフトウェア管理"
-                        url: "xrp-ledger-overview.html#責任あるソフトウェア管理"
-                    secure_crypto:
-                        head: "安全で適応性のある暗号技術"
-                        url: "xrp-ledger-overview.html#安全で適応性のある暗号技術"
-                    smart_contracts:
-                        head: "スマートコントラクト用の最新機能"
-                        url: "xrp-ledger-overview.html#スマートコントラクト用の最新機能"
-                    decentralized_exchange:
-                        head: "台帳上の分散型取引所"
-                        url: "xrp-ledger-overview.html#台帳上の分散型取引所"
+        locale_file: locale/ja/LC_MESSAGES/messages.mo
         link_subs:
+            # Adjust XRP-API readme link to point to the right place in the repo
+            "./src/api-v3/paths/preparations/payments.ts": "https://github.com/xpring-eng/xrp-api/blob/master/src/api-v3/paths/preparations/payments.ts"
             # Fix 2 links from untranslated send-xrp.html:
             "accounts.html#creating-accounts": "accounts.html#アカウントの作成"
             "rippled-server-modes.html#reasons-to-run-a-stock-server": "rippled-server-modes.html#ストックサーバーを運用する理由"
@@ -215,9 +88,10 @@ targets:
             "xrp-ledger-overview.html#censorship-resistant-transaction-processing": "xrp-ledger-overview.html#耐検閲性のある取引処理"
             # Fix 1 link from untranslated software-ecosystem.html:
             "rippled-server-modes.html#reasons-to-run-a-validator": "rippled-server-modes.html#バリデータを運用する理由"
-            # Fix 2 links from untranslated xrp-ledger-toml.html:
+            # Fix 3 links from untranslated xrp-ledger-toml.html:
             "currency-formats.html#currency-codes": "currency-formats.html#通貨コード"
             "run-rippled-as-a-validator.html#1-understand-the-traits-of-a-good-validator": "run-rippled-as-a-validator.html#1-優れたバリデータの特徴の理解"
+            "run-rippled-as-a-validator.html#revoke-validator-keys": "run-rippled-as-a-validator.html#バリデータキーの破棄"
             # Fix 1 link from untranslated snippet post-rippled-install.md:
             "get-started-with-the-rippled-api.html#commandline": "get-started-with-the-rippled-api.html#コマンドライン"
             # Fix 8 links from untranslated use-an-escrow-as-a-smart-contract.html:
@@ -236,7 +110,7 @@ targets:
             "error-formatting.html#universal-errors": "error-formatting.html#汎用エラー"
             # Fix 2 links from untranslated demurrage.html:
             "currency-formats.html#issued-currency-precision": "currency-formats.html#発行済み通貨の計算"
-            # Fix 10 links from untranslated known-amendments.html:
+            # Fix links from untranslated known-amendments.html:
             "accounts.html#permanence-of-accounts": "accounts.html#アカウントの永続性"
             "paths.html#path-specifications": "paths.html#パスの仕様"
             "rippling.html#the-noripple-flag": "rippling.html#norippleフラグ"
@@ -247,6 +121,8 @@ targets:
             "accountroot.html#accountroot-flags": "accountroot.html#accountrootのフラグ" # also used in untranslated require-destination-tags.html, become-an-xrp-ledger-gateway.html
             "accountset.html#accountset-flags": "accountset.html#accountsetのフラグ"
             "basic-data-types.html#ledger-index": "basic-data-types.html#レジャーインデックス"
+            "transaction-common-fields.html#global-flags": "transaction-common-fields.html#グローバルフラグ"
+            "transaction-malleability.html#malleability-with-multi-signatures": "transaction-malleability.html#マルチ署名の展性"
             # Fix 2 links from untranslated data type snippets
             "basic-data-types.html#hashes": "basic-data-types.html#ハッシュ"
             "basic-data-types.html#addresses": "basic-data-types.html#アドレス"
@@ -278,6 +154,19 @@ targets:
             "rippled-server-modes.html#public-hubs": "rippled-server-modes.html#公開ハブ"
             "peer-protocol.html#peer-discovery": "peer-protocol.html#ピア発見"
             "ledgers.html#tree-format": "ledgers.html#ツリーの形式"
+            # Fix links from untranslated currency_codes snippet
+            "currency-formats.html#standard-currency-codes": "currency-formats.html#標準通貨コード"
+            "currency-formats.html#nonstandard-currency-codes": "currency-formats.html#非標準通貨コード"
+            # Fix links from untranslated disable-master-key-pair.html.
+            "transaction-basics.html#authorizing-transactions": "transaction-basics.html#トランザクションの承認"
+            "transaction-common-fields.html#auto-fillable-fields": "transaction-common-fields.html#自動入力可能なフィールド"
+            # Fix link from untranslated rate-limiting.html
+            "get-started-with-the-rippled-api.html#admin-access": "get-started-with-the-rippled-api.html" # The translated doc hasn't been updated to add the "Admin Access" section, but the details are mentioned near the top of the page
+            # Fix links from untranslated validator-list.html
+            "run-rippled-as-a-validator.html#3-enable-validation-on-your-rippled-server": "run-rippled-as-a-validator.html#3-rippledサーバーで検証を有効化"
+            "basic-data-types.html#specifying-time": "basic-data-types.html#時間の指定"
+            # Fix link from untranslated run-rippled-as-a-wallet-server.html
+            "run-rippled-as-a-validator.html#6-provide-domain-verification": "run-rippled-as-a-validator.html#6-ドメイン検証の提供"
 
 
     -   name: xrp-api-only
@@ -286,24 +175,8 @@ targets:
         github_forkurl: https://github.com/ripple/xrpl-dev-portal
         github_branch: master
         no_cover: true
-        strings:
-            blog: "Blog"
-            search: "Search site with Google..."
-            bc_home: "Home"
-            tl_banner:
-                head: "Sorry, this page is not available in your language."
-                body: "We are making an effort to offer the XRP Ledger Dev Portal in a variety of languages, but not all pages are available in all languages. If you'd like to help, <a href=\"https://github.com/ripple/xrpl-dev-portal/blob/master/CONTRIBUTING.md\">please contribute!</a>"
-            pagetoc: "In this document"
-            footer:
-                ripple:
-                    careers: "Ripple Careers"
-                    github: "Ripple on GitHub"
-                    xrp_resources: "XRP Resources"
-                license: "License"
-            to_top:
-                short: "Top"
-                long: "Jump to top of page"
-            github_edit: "Edit"
+        link_subs:
+            "./src/api-v3/paths/preparations/payments.ts": "https://github.com/xpring-eng/xrp-api/blob/master/src/api-v3/paths/preparations/payments.ts"
 
     # Data API target for porting changes to the README in the upstream repo
     # Intended for use in markdown (--md) mode.
@@ -315,24 +188,6 @@ targets:
         no_cover: True
         link_re_subs:
            "([\\w-]+\\.html)": https://xrpl.org/\1
-        strings:
-            blog: "Blog"
-            search: "Search site with Google..."
-            bc_home: "Home"
-            tl_banner:
-                head: "Sorry, this page is not available in your language."
-                body: "We are making an effort to offer the XRP Ledger Dev Portal in a variety of languages, but not all pages are available in all languages. If you'd like to help, <a href=\"https://github.com/ripple/xrpl-dev-portal/blob/master/CONTRIBUTING.md\">please contribute!</a>"
-            pagetoc: "In this document"
-            footer:
-                ripple:
-                    careers: "Ripple Careers"
-                    github: "Ripple on GitHub"
-                    xrp_resources: "XRP Resources"
-                license: "License"
-            to_top:
-                short: "Top"
-                long: "Jump to top of page"
-            github_edit: "Edit"
 
 pages:
 
@@ -758,7 +613,6 @@ pages:
         doc_type: Concepts
         category: Payment Types
         blurb: Checks let users create deferred payments that can be canceled or cashed by the intended recipients.
-        status: not_enabled
         targets:
             - en
 
@@ -768,7 +622,6 @@ pages:
         doc_type: Concepts
         category: Payment Types
         blurb: Checks let users create deferred payments that can be canceled or cashed by the intended recipients. #TODO:translate
-        status: not_enabled
         targets:
             - ja
 
@@ -1676,6 +1529,16 @@ pages:
         targets:
             - ja
 
+    -   md: tutorials/manage-account-settings/disable-master-key-pair.md
+        html: disable-master-key-pair.html
+        funnel: Docs
+        doc_type: Tutorials
+        category: Manage Account Settings
+        blurb: Disable the master key that is mathematically associated with an address.
+        targets:
+            - en
+            - ja
+
     -   md: tutorials/manage-account-settings/set-up-multi-signing.md
         html: set-up-multi-signing.html
         funnel: Docs
@@ -1895,7 +1758,6 @@ pages:
         category: Use Specialized Payment Types
         subcategory: Use Checks
         blurb: Checks in the XRP Ledger authorize another account to claim funds later, similar to how personal paper checks work.
-        status: not_enabled
         template: template-landing-children.html
         targets:
             - en
@@ -1907,7 +1769,6 @@ pages:
         category: Use Specialized Payment Types
         subcategory: Use Checks
         blurb: Checks in the XRP Ledger authorize another account to claim funds later, similar to how personal paper checks work.
-        status: not_enabled
         template: template-landing-children.html
         targets:
             - ja
@@ -1918,7 +1779,6 @@ pages:
         doc_type: Tutorials
         category: Use Specialized Payment Types
         subcategory: Use Checks
-        status: not_enabled
         targets:
             - en
 
@@ -1928,7 +1788,6 @@ pages:
         doc_type: Tutorials
         category: Use Specialized Payment Types
         subcategory: Use Checks
-        status: not_enabled
         targets:
             - ja
 
@@ -1938,7 +1797,6 @@ pages:
         doc_type: Tutorials
         category: Use Specialized Payment Types
         subcategory: Use Checks
-        status: not_enabled
         targets:
             - en
 
@@ -1948,7 +1806,6 @@ pages:
         doc_type: Tutorials
         category: Use Specialized Payment Types
         subcategory: Use Checks
-        status: not_enabled
         targets:
             - ja
 
@@ -1958,7 +1815,6 @@ pages:
         doc_type: Tutorials
         category: Use Specialized Payment Types
         subcategory: Use Checks
-        status: not_enabled
         targets:
             - en
 
@@ -1968,7 +1824,6 @@ pages:
         doc_type: Tutorials
         category: Use Specialized Payment Types
         subcategory: Use Checks
-        status: not_enabled
         targets:
             - ja
 
@@ -1978,7 +1833,6 @@ pages:
         doc_type: Tutorials
         category: Use Specialized Payment Types
         subcategory: Use Checks
-        status: not_enabled
         targets:
             - en
 
@@ -1988,7 +1842,6 @@ pages:
         doc_type: Tutorials
         category: Use Specialized Payment Types
         subcategory: Use Checks
-        status: not_enabled
         targets:
             - ja
 
@@ -1998,7 +1851,6 @@ pages:
         doc_type: Tutorials
         category: Use Specialized Payment Types
         subcategory: Use Checks
-        status: not_enabled
         targets:
             - en
 
@@ -2008,7 +1860,6 @@ pages:
         doc_type: Tutorials
         category: Use Specialized Payment Types
         subcategory: Use Checks
-        status: not_enabled
         targets:
             - ja
 
@@ -2018,7 +1869,6 @@ pages:
         doc_type: Tutorials
         category: Use Specialized Payment Types
         subcategory: Use Checks
-        status: not_enabled
         targets:
             - en
 
@@ -2028,7 +1878,6 @@ pages:
         doc_type: Tutorials
         category: Use Specialized Payment Types
         subcategory: Use Checks
-        status: not_enabled
         targets:
             - ja
 
@@ -2357,6 +2206,28 @@ pages:
         targets:
             - en
 
+    -   md: tutorials/manage-the-rippled-server/configuration/run-rippled-as-a-wallet-server.md
+        html: run-rippled-as-a-wallet-server.html
+        funnel: Docs
+        doc_type: Tutorials
+        category: Manage the rippled Server
+        subcategory: Configuration
+        blurb: A multipurpose configuration for anyone integrating XRP. #TODO:translate
+        targets:
+            - en
+            - ja
+
+    -   md: tutorials/manage-the-rippled-server/configuration/configure-statsd.md
+        html: configure-statsd.html
+        funnel: Docs
+        doc_type: Tutorials
+        category: Manage the rippled Server
+        subcategory: Configuration
+        blurb: Monitor your rippled server with StatsD metrics. #TODO:translate
+        targets:
+            - en
+            - ja
+
     -   md: tutorials/manage-the-rippled-server/configuration/run-rippled-as-a-validator.ja.md
         html: run-rippled-as-a-validator.html
         funnel: Docs
@@ -2465,6 +2336,17 @@ pages:
         subcategory: Configuration
         blurb: Full history servers provide a record of every transaction ever to occur in the XRP Ledger, although they are expensive to run. #TODO:translate
         targets:
+            - ja
+
+    -   md: tutorials/manage-the-rippled-server/configuration/configure-grpc.md
+        html: configure-grpc.html
+        funnel: Docs
+        doc_type: Tutorials
+        category: Manage the rippled Server
+        subcategory: Configuration
+        blurb: Enable and configure the gRPC API.
+        targets:
+            - en
             - ja
 
     -   md: tutorials/manage-the-rippled-server/configuration/enable-public-signing.md
@@ -2966,6 +2848,17 @@ pages:
         category: API Conventions
         blurb: Why and how only transactions can modify the ledger. #TODO:translate
         targets:
+            - ja
+
+    -   md: references/rippled-api/api-conventions/rate-limiting.md
+        html: rate-limiting.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: API Conventions
+        blurb: Information on how public APIs limit clients from making too many requests.
+        targets:
+            - en
             - ja
 
     -   md: references/rippled-api/api-conventions/request-formatting.md
@@ -4452,6 +4345,18 @@ pages:
         targets:
             - ja
 
+    -   md: references/rippled-api/admin-rippled-methods/status-and-debugging-methods/manifest.md
+        html: manifest.html
+        blurb: Look up the public information about a known validator.
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Admin rippled Methods
+        subcategory: Status and Debugging Methods
+        targets:
+            - en
+            - ja
+
     -   md: references/rippled-api/admin-rippled-methods/status-and-debugging-methods/print.md
         html: print.html
         blurb: Get information about internal subsystems.
@@ -4472,6 +4377,18 @@ pages:
         category: Admin rippled Methods
         subcategory: Status and Debugging Methods
         targets:
+            - ja
+
+    -   md: references/rippled-api/admin-rippled-methods/status-and-debugging-methods/validator_info.md
+        html: validator_info.html
+        blurb: Get the server's validation settings, if configured as a validator.
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Admin rippled Methods
+        subcategory: Status and Debugging Methods
+        targets:
+            - en
             - ja
 
     -   md: references/rippled-api/admin-rippled-methods/status-and-debugging-methods/validator_list_sites.md
@@ -4645,7 +4562,6 @@ pages:
         category: Ledger Data Formats
         subcategory: Ledger Object Types
         blurb: A check that can be redeemed for money by its destination.
-        status: not_enabled
         targets:
             - en
 
@@ -4657,7 +4573,6 @@ pages:
         category: Ledger Data Formats
         subcategory: Ledger Object Types
         blurb: A check that can be redeemed for money by its destination. #TODO:translate
-        status: not_enabled
         targets:
             - ja
 
@@ -4955,7 +4870,6 @@ pages:
         category: Transaction Formats
         subcategory: Transaction Types
         blurb: Delete an account.
-        status: not_enabled
         targets:
             - en
             - ja
@@ -4968,7 +4882,6 @@ pages:
         category: Transaction Formats
         subcategory: Transaction Types
         blurb: Cancel a check.
-        status: not_enabled
         targets:
             - en
 
@@ -4980,7 +4893,6 @@ pages:
         category: Transaction Formats
         subcategory: Transaction Types
         blurb: 未清算のCheckを取り消し、送金を行わずにレジャーから削除します。
-        status: not_enabled
         targets:
             - ja
 
@@ -4992,7 +4904,6 @@ pages:
         category: Transaction Formats
         subcategory: Transaction Types
         blurb: Redeem a check.
-        status: not_enabled
         targets:
             - en
 
@@ -5004,7 +4915,6 @@ pages:
         category: Transaction Formats
         subcategory: Transaction Types
         blurb: レジャーでCheckオブジェクトの清算を試みます。
-        status: not_enabled
         targets:
             - ja
 
@@ -5016,7 +4926,6 @@ pages:
         category: Transaction Formats
         subcategory: Transaction Types
         blurb: Create a check.
-        status: not_enabled
         targets:
             - en
 
@@ -5028,7 +4937,6 @@ pages:
         category: Transaction Formats
         subcategory: Transaction Types
         blurb: レジャーにCheckオブジェクトを作成します
-        status: not_enabled
         targets:
             - ja
 
@@ -5613,21 +5521,34 @@ pages:
             - en
             - ja
 
+    -   md: references/rippled-api/validator-list.md
+        html: validator-list.html
+        funnel: Docs
+        doc_type: References
+        supercategory: rippled API
+        category: Validator List
+        blurb: Special API method for sharing recommended validator lists. #TODO:translate
+        targets:
+            - en
+            - ja
+
     # XRP-API docs (auto-generated)---------------------------------------------
 
     -   name: XRP-API
-        md: https://raw.githubusercontent.com/ripple/xrp-api/master/README.md
+        md: https://raw.githubusercontent.com/xpring-eng/xrp-api/master/README.md
         html: xrp-api.html
         funnel: Docs
         doc_type: References
         supercategory: XRP-API
+        filters:
+            - xrpapi_readme
         targets:
             - en
             - ja
             - xrp-api-only
 
         # API reference generator makes multiple files here
-    -   openapi_specification: https://raw.githubusercontent.com/ripple/xrp-api/master/api-doc.yml
+    -   openapi_specification: https://raw.githubusercontent.com/xpring-eng/xrp-api/master/api-doc.yml
         openapi_md_template_path: tool/openapi_templates_alpha/
         api_slug: xrp-api
         funnel: Docs
@@ -5642,7 +5563,7 @@ pages:
     # --------------- end "XRP-API" section --------------------------------
 
     -   name: RippleAPI Reference # name is required for remote-sourced files
-        md: https://raw.githubusercontent.com/ripple/ripple-lib/1.6.0/docs/index.md
+        md: https://raw.githubusercontent.com/ripple/ripple-lib/1.7.1/docs/index.md
         html: rippleapi-reference.html
         funnel: Docs
         doc_type: References
@@ -5924,6 +5845,14 @@ pages:
             - ja
         template: template-xrp-ledger-toml-checker.html
 
+    -   name: Domain Verification Checker
+        funnel: Dev Tools
+        html: validator-domain-verifier.html
+        targets:
+            - en
+            - ja
+        template: template-validator-domain-verifier.html
+
     -   name: XRP Faucets
         html: xrp-testnet-faucet.html
         funnel: Dev Tools
@@ -5977,6 +5906,13 @@ known_broken_links:
     - http://eur-lex.europa.eu/LexUriServ/LexUriServ.do?uri=OJ:L:2006:345:0001:0009:EN:PDF
     # Dev blog link assumes relationship with xrpl.org
     - /blog/
+    - /blog/label/rippled-release-notes.html
+    - /blog/label/amendments.html
+    - /blog/label/features.html
+    # For some reason the Web Archive links are breaking in the link checker
+    #  even though they still work in browser:
+    - https://web.archive.org/web/20161007113240/https://wiki.ripple.com/Ripple.txt
+    - http://web.archive.org/web/20171211225452/https://forum.ripple.com/viewtopic.php?f=2&t=3613
 
 # Style Checker Config ------------------------------------------------------ #
 

@@ -140,7 +140,7 @@ The _only_ changes made by this [no-op transaction](cancel-or-skip-a-transaction
 
 - The `Sequence` value increases from 376 to 377.
 
-- The XRP `Balance` in this account changes from `396015176` to `396015164` [drops of XRP](basic-data-types.html#xrp). This decrease of exactly 12 drops represents the [transaction cost](transaction-cost.html), as specified in the `Fee` field of the transaction.
+- The XRP `Balance` in this account changes from `396015176` to `396015164` [drops of XRP][]. This decrease of exactly 12 drops represents the [transaction cost](transaction-cost.html), as specified in the `Fee` field of the transaction.
 
 - The [`AccountTxnID`](transaction-common-fields.html#accounttxnid) changes to reflect that this transaction is now the one most recently sent from this address.
 
@@ -157,7 +157,7 @@ Since the `ModifiedNode` entry for rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn's account 
 Almost any transaction can result in the following types of changes:
 
 - **Sequence and Transaction Cost changes:** [As mentioned, every transaction (excluding pseudo-transactions) modifies the sender's `AccountRoot` object](#2-interpret-metadata) to increase the sender's sequence number and destroy the XRP used to pay the transaction cost.
-- **Account Threading:** Some transactions that create objects also modify the [AccountRoot object](accountroot.html) of an intended recipient or destination account to indicate that something relating to that account changed. This technique of "tagging" an account changes only that object's `PreviousTxnID` and `PreviousTxnLgrSeq` fields. This makes it more efficient to look up an account's transaction history of an account by following the "thread" of transactions mentioned in these fields.
+- **Account Threading:** Some transactions that create objects also modify the [AccountRoot object](accountroot.html) of an intended recipient or destination account to indicate that something relating to that account changed. This technique of "tagging" an account changes only that object's `PreviousTxnID` and `PreviousTxnLgrSeq` fields. This makes it more efficient to look up an account's transaction history by following the "thread" of transactions mentioned in these fields.
 - **Directory Updates:** Transactions that create or remove ledger objects often make changes to [DirectoryNode objects](directorynode.html) to track which objects exist. Also, when a transaction adds an object that counts towards an account's [owner reserve](reserves.html#owner-reserves), it increases the `OwnerCount` of the owner's [AccountRoot object][]. Removing an object decreases the `OwnerCount`. This is how the XRP Ledger tracks how much owner reserve each account owes at any point in time.
 
 Example of increasing an Account's `OwnerCount`:
@@ -353,7 +353,7 @@ In the following excerpt, we see that r9UUEX...'s balance increases by 1 billion
 
 Look for a `CreatedNode` of LedgerEntryType `PayChannel` when creating a payment channel. You should also find a `ModifiedNode` of LedgerEntryType `AccountRoot` showing the decrease in the sender's balance. Look for an `Account` field in the `FinalFields` to confirm that the address matches the sender, and look at the difference in the `Balance` fields to see the change in XRP balance.
 
-If the [fixPayChanRecipientOwnerDir amendment](known-amendments.html#fixpaychanrecipientownerdir) :not_enabled: is enabled, the metadata should also change the destination account's [owner directory](directorynode.html) to list the newly-created payment channel. This prevents an account from [being deleted](accounts.html#deletion-of-accounts) if it is the receiver of an open payment channel. (If the payment channel was created before the fixPayChanRecipientOwnerDir amendment became enabled, the account can be deleted.)
+The metadata also lists the newly-created payment channel in the destination's [owner directory](directorynode.html). This prevents an account from [being deleted](accounts.html#deletion-of-accounts) if it is the destination of an open payment channel. (This behavior was added by the [fixPayChanRecipientOwnerDir amendment](known-amendments.html#fixpaychanrecipientownerdir).)
 
 There are several ways to request to close a payment channel, aside from the immutable `CancelAfter` time of the channel (which is only set on creation). If a transaction schedules a channel to close, there is  a `ModifiedNode` entry of LedgerEntryType `PayChannel` for the channel, with the newly-added close time in the `Expiration` field of the `FinalFields`. The following example shows the changes to a `PayChannel` in a case where the sender requested to close the channel without redeeming a claim:
 

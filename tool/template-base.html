@@ -34,7 +34,14 @@
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
       gtag('config', 'UA-45576805-2');
+      gtag('config', 'UA-157720658-3', { 'linker': {
+        'domains': ['blog.xpring.io', 'forum.xpring.io', 'xpring.io',
+                    'xrpl.org', 'explorer.xrpl.org', 'testnet.xrpl.org']
+        } }
+      );
     </script>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
     {% block head %}
 
@@ -62,11 +69,11 @@
           {% endif %}
         {% endfor %}
         <li class="nav-item">
-          <a class="nav-link" href="/blog/">{{target.strings.blog}}</a>
+          <a class="nav-link" href="/blog/">{% trans %}Blog{% endtrans %}</a>
         </li>
       </ul><!-- /.navbar-nav -->
       {% include 'template-github-edit.html' %}
-      <form class="navbar-form navbar-right" id="navbar-search" role="search" method="get" action="https://www.google.com/search">
+      <form class="navbar-form navbar-right" id="navbar-search" role="search">
         <div class="form-inline">
           <label class="sr-only" for="topsearchbar">{{target.strings.search}}</label>
           <input name="q" value="site:xrpl.org" type="hidden">
@@ -74,6 +81,8 @@
           <label class="sr-only" for="topsearchbar">Search site with Google...</label>
           <input name="q" value="site:xrpl.org" type="hidden">
           <input id="topsearchbar" name="q" type="text" class="form-control" class="top-search" placeholder="Search site with Google...">
+          <label class="sr-only" for="topsearchbar">{% trans %}Search site...{% endtrans %}</label>
+          <input id="topsearchbar" name="q" type="text" class="form-control" class="top-search" placeholder="{% trans %}Search site...{% endtrans %}">
           <button type="submit" class="btn btn-default fa fa-search">&nbsp;</button>
         </div>
       </form>
@@ -128,6 +137,17 @@
 <script src="assets/vendor/bootstrap.min.js"></script>
 <!-- fontawesome icons -->
 <link rel="stylesheet" href="assets/vendor/fontawesome/css/font-awesome.min.css" />
+
+<!-- Algolia DocSearch -->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
+<script type="text/javascript"> docsearch({
+apiKey: '70de5b9b8ef95460f3c6e04054b325b2',
+indexName: 'xrpl',
+inputSelector: '#topsearchbar',
+algoliaOptions: { 'facetFilters': ["lang:{{target.lang}}"] },
+debug: false
+});
+</script>
 
 {% block endbody %}{% endblock %}
 </body>

@@ -17,12 +17,12 @@
         + target.github_branch + "/tool/" + currentpage.template %}
     {% endif %}
     {% if target.is_pr_build is defined and target.is_pr_build and have_edit_link %}
-      {% set githuburl = githuburl + "?pr=/ripple/ripple-dev-portal/pull/"
+      {% set githuburl = githuburl + "?pr=/ripple/xrpl-dev-portal/pull/"
         + target.github_pr_id %}
     {% endif %}
     {% if not have_edit_link %}
       {% set githuburl = target.github_forkurl %}
     {% endif %}
-    <a href="{{githuburl}}" target="_blank" class="github-edit">{{target.strings.github_edit}}</a>
+    <a href="{{githuburl}}" target="_blank" class="github-edit">{% trans %}Edit{% endtrans %}</a>
   {% endif %}
 </div><!-- /.github-edit -->

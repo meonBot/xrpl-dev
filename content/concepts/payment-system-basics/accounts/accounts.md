@@ -60,7 +60,7 @@ Some addresses have special meaning, or historical uses, in the XRP Ledger. In m
 
 ## Deletion of Accounts
 
-The [DeletableAccounts amendment](known-amendments.html#deletableaccounts) :not_enabled: makes it possible to delete accounts. If the DeletableAccounts amendment is not enabled, every funded account must remain in the XRP Ledger's data tree forever.
+The [DeletableAccounts amendment](known-amendments.html#deletableaccounts) (enabled 2020-05-08) made it possible to delete accounts.
 
 To be deleted, an account must meet the following requirements:
 
@@ -69,11 +69,13 @@ To be deleted, an account must meet the following requirements:
     - `Escrow`
     - `PayChannel`
     - `RippleState`
-    - `Check` :not_enabled:
+    - `Check`
 - The account must own fewer than 1000 objects in the ledger.
 - The [AccountDelete transaction][] must pay a special [transaction cost][] equal to at least the [owner reserve](reserves.html) for one item (currently 5 XRP).
 
 After an account has been deleted, it can be re-created in the ledger through the normal method of [creating accounts](#creating-accounts). An account that has been deleted and re-created is no different than an account that has been created for the first time.
+
+**Warning:** The [AccountDelete transaction][]'s transaction cost always applies when the transaction is included in a validated ledger, even if the transaction failed because the account does not meet the requirements to be deleted. To greatly reduce the chances of paying the high transaction cost if the account cannot be deleted, [submit the transaction](submit.html) with `fail_hard` enabled.
 
 Unlike Bitcoin and many other cryptocurrencies, each new version of the XRP Ledger's public ledger chain contains the full state of the ledger, which increases in size with each new account. For that reason, you should not create new XRP Ledger accounts unless necessary. You can recover some of an account's 20 XRP [reserve](reserves.html) by deleting the account, but you must still destroy at least 5 XRP to do so.
 

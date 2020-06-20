@@ -89,6 +89,7 @@ expires = 2019-03-01T00:00:00.000Z
 
 [[VALIDATORS]]
 public_key = "nHBtDzdRDykxiuv7uSMPTcGexNm879RUUz5GW4h1qgjbtyvWZ1LE"
+attestation = "A59AB577E14A7BEC053752ABFE78C3DED6DCEC81A7C41DF1931BC61742BB4FAEAA0D4F1C1EAE5BC74F6D68A3B26C8A223EA2492A5BD18D51F8AC7F4A97DFBE0C"
 network = "main"
 owner_country = "us"
 server_country = "us"
@@ -96,10 +97,13 @@ unl = "https://vl.ripple.com"
 
 [[VALIDATORS]]
 public_key = "nHB57Sey9QgaB8CubTPvMZLkLAzfJzNMWBCCiDRgazWJujRdnz13"
+attestation = "A59AB577E14A7BEC053752FBFE78C3DED6DCEC81A7C41DF1931BC61742BB4FAEAA0D4F1C1EAE5BC74F6D68A3B26C8A223EA249BA5BD18D51F8AC7F4A97DFBE0C"
 network = "testnet"
 owner_country = "us"
 server_country = "us"
 unl = "https://vl.testnet.rippletest.net"
+
+# Note: the attestions above are only examples and are not real. 
 
 [[ACCOUNTS]]
 address = "r3kmLJN5D28dHuH8vZNUZpMC43pEHpaocV"
@@ -165,6 +169,7 @@ For _each_ `[[VALIDATORS]]` entry, you MAY provide any of the following fields:
 | Field        | Type   | Description                                          |
 |:-------------|:-------|:-----------------------------------------------------|
 | `public_key` | String | The master public key of your primary validator, encoded in the XRP Ledger's base58 format (typically, this starts with `n`). |
+| `attestation`| String | A signed message, in hexadecimal, indicating that the same entity runs this validator and the domain serving this TOML file. For more information, see [Domain Verification](xrp-ledger-toml.html#domain-verification).
 | `network`  | String | Which network chain this validator follows. If omitted, clients SHOULD assume that the validator follows the production XRP Ledger. Use `main` to explicitly specify the production XRP Ledger. Use `testnet` for Ripple's XRP Ledger Test Net. You MAY provide other values to describe other test nets or non-standard network chains. |
 | `owner_country` | String | The two-letter ISO-3166-2 country code describing the main legal jurisdiction that you (the validator's owner) are subject to. |
 | `server_country` | String | The two-letter ISO-3166-2 country code describing the physical location where this validating server is. |
@@ -212,7 +217,7 @@ For all URLs in this section, the trailing slash is RECOMMENDED. If omitted, cli
 
 ### Currencies
 
-If you issue any assets, tokens, or currencies in the XRP Ledger, you can provide information about them in the `[[CURRENCIES]]` list. If present, the servers list MUST BE presented as an array of tables, with each entry using the header `[[CURRENCIES]]`, including double square brackets. Each entry describes a separate issued currency or asset. For _each_ `[[CURRENCIES]]` entry, you MAY provide any of the following fields:
+If you issue any assets, tokens, or currencies in the XRP Ledger, you can provide information about them in the `[[CURRENCIES]]` list. If present, the currencies list MUST BE presented as an array of tables, with each entry using the header `[[CURRENCIES]]`, including double square brackets. Each entry describes a separate issued currency or asset. For _each_ `[[CURRENCIES]]` entry, you MAY provide any of the following fields:
 
 | Field   | Type   | Description                                           |
 |:--------|:-------|:------------------------------------------------------|
@@ -280,16 +285,58 @@ Domain verification requires establishing a two-way link between the domain oper
 
     - In that `xrp-ledger.toml` file, provide a `[[VALIDATORS]]` entry with the validator's master public key in the `public_key` field.
 
-2. The validator claims ownership by the domain. The instructions for this step are out of scope for this specification.
+2. The validator claims ownership of the domain: 
 
-    <!-- TODO: Link documentation when it's available. -->
-    <!-- Aside: the old way of doing this was to set the `Domain` field of the
-         XRP Ledger account whose public key matched the validator's public key.
-         Since only the holder of the corresponding private key could send
-         transactions from this address, doing so effectively proved ownership
-         of the validator's private key.
-    -->
+    - Ensure that you have access to the validator-keys.json file that you created when first setting up your validator. If you have lost your keys or the keys have been compromised, please [revoke your keys](run-rippled-as-a-validator.html#revoke-validator-keys) and generate new keys. 
 
+        Note: Recall that your validator-keys.json file should be stored **in a location not on your validator**. 
+
+    - **In a location not on your validator**, build the [validator-keys-tool](https://github.com/ripple/validator-keys-tool).  
+
+    - Run the following command to generate a new validator token that incorporates your domain and update your `xrp-ledger.toml` and `rippled.cfg` files:
+
+        
+            $./validator-keys set_domain example.com
+
+**Warning:** This command updates your validator-keys.json file. Please be sure to store the `validator-keys.json` file in a secure location.
+
+Sample Output: 
+
+```
+The domain name has been set to: example.com
+
+The domain attestation for validator nHDG5CRUHp17ShsEdRweMc7WsA4csiL7qEjdZbRVTr74wa5QyqoF is:
+
+attestation="A59AB577E14A7BEC053752FBFE78C3DE
+             D6DCEC81A7C41DF1931BC61742BB4FAE
+             AA0D4F1C1EAE5BC74F6D68A3B26C8A22
+             3EA2492A5BD18D51F8AC7F4A97DFBE0C"
+
+You should include it in your xrp-ledger.toml file in the
+section for this validator.
+
+You also need to update the rippled.cfg file to add a new
+validator token and restart rippled:
+
+# validator public key: nHDG5CRUHp17ShsEdRweMc7WsA4csiL7qEjdZbRVTr74wa5QyqoF
+
+[validator_token]
+eyJ2YWxpZGF0aW9uX3NlY3J|dF9rZXkiOiI5ZWQ0NWY4NjYyNDFjYzE4YTI3NDdiNT
+QzODdjMDYyNTkwNzk3MmY0ZTcxOTAyMzFmYWE5Mzc0NTdmYT|kYWY2IiwibWFuaWZl
+c3QiOiJKQUFBQUFGeEllMUZ0d21pbXZHdEgyaUNjTUpxQzlnVkZLaWxHZncxL3ZDeE
+hYWExwbGMyR25NaEFrRTFhZ3FYeEJ3RHdEYklENk9NU1l1TTBGREFscEFnTms4U0tG
+bjdNTzJmZGtjd1JRSWhBT25ndTlzQUtxWFlvdUorbDJWMFcrc0FPa1ZCK1pSUzZQU2
+hsSkFmVXNYZkFpQnNWSkdlc2FhZE9KYy9hQVpva1MxdnltR21WcmxIUEtXWDNZeXd1
+NmluOEhBU1FLUHVnQkQ2N2tNYVJGR3ZtcEFUSGxHS0pkdkRGbFdQWXk1QXFEZWRGdj
+VUSmEydzBpMjFlcTNNWXl3TFZKWm5GT3I3QzBrdzJBaVR6U0NqSXpkaXRROD0ifQ==     
+```
+
+Update [the contents of your `xrp-ledger.toml` file](#contents) with the `attestation` block, and update the `rippled.cfg` file with the `[validator_token]` block from the sample output.
+
+
+
+
+**Warning:** Your validator token is meant to be kept secret. Do not share it on your `xrp-ledger.toml` file or anywhere else. 
 
 ## Account Verification
 

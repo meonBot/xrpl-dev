@@ -1,7 +1,7 @@
 # PaymentChannelClaim
 [[Source]](https://github.com/ripple/rippled/blob/master/src/ripple/app/tx/impl/PayChan.cpp "Source")
 
-_Requires the [PayChan amendment][]._
+_Added by the [PayChan amendment][]._
 
 Claim XRP from a payment channel, adjust the payment channel's expiration, or both. This transaction can be used differently depending on the transaction sender's role in the specified channel:
 
@@ -47,7 +47,7 @@ The **destination address** of a channel can:
 | `Signature` | String    | Blob              | _(Optional)_ The signature of this claim, as hexadecimal. The signed message contains the channel ID and the amount of the claim. Required unless the sender of the transaction is the source address of the channel. |
 | `PublicKey` | String    | Blob              | _(Optional)_ The public key used for the signature, as hexadecimal. This must match the `PublicKey` stored in the ledger for the channel. Required unless the sender of the transaction is the source address of the channel and the `Signature` field is omitted. (The transaction includes the PubKey so that `rippled` can check the validity of the signature before trying to apply the transaction to the ledger.) |
 
-If the [DeletableAccounts amendment](known-amendments.html#deletableaccounts) :not_enabled: is enabled _and_ the [fixPayChanRecipientOwnerDir amendment](known-amendments.html#fixpaychanrecipientownerdir) :not_enabled: was not enabled when the payment channel was created, it is possible that the destination of the payment channel has been [deleted](accounts.html#deletion-of-accounts) and does not currently exist in the ledger. If the destination has been deleted, the source account cannot send XRP from the channel to the destination; instead, the transaction fails with `tecNO_DST`. (And, of course, the deleted account cannot send any transactions at all.) Other uses of this transaction type are unaffected when the destination account has been deleted, including adjusting the channel expiration, closing a channel with no XRP, or removing a channel that has passed its expiration time.
+If the payment channel was created before the [fixPayChanRecipientOwnerDir amendment](known-amendments.html#fixpaychanrecipientownerdir) became enabled (on 2020-05-01), it is possible that the destination of the payment channel has been [deleted](accounts.html#deletion-of-accounts) and does not currently exist in the ledger. If the destination has been deleted, the source account cannot send XRP from the channel to the destination; instead, the transaction fails with `tecNO_DST`. (And, of course, the deleted account cannot send any transactions at all.) Other uses of this transaction type are unaffected when the destination account has been deleted, including adjusting the channel expiration, closing a channel with no XRP, or removing a channel that has passed its expiration time.
 
 
 ## PaymentChannelClaim Flags
